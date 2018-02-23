@@ -24,12 +24,12 @@ public class QRGenerator {
 		Scanner in = new Scanner(new InputStreamReader(System.in));
 		
 		System.out.println("Enter a sentence to be converted into QR code");
-		String str = in.nextLine();
+		String details = in.nextLine();
 		
 		System.out.println("Enter a File name in which QR Code is to be stored");
 		String filename = in.nextLine();
 		
-		ByteArrayOutputStream out =  QRCode.from(str).to(ImageType.JPG).stream();
+		ByteArrayOutputStream out =  QRCode.from(details).to(ImageType.JPG).stream();
 		
 		File f = new File(filename+".jpg");
 		FileOutputStream fos = new FileOutputStream(f);
