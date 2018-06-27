@@ -1,8 +1,15 @@
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
 
@@ -35,6 +42,15 @@ public class QRGenerator {
 		FileOutputStream fos = new FileOutputStream(f);
 		
 		fos.write(out.toByteArray());
+		
+		BufferedImage img = ImageIO.read(f);
+        JLabel label = new JLabel(new ImageIcon(img));
+	    JFrame frame = new JFrame("Image");
+	    frame.setSize(300,300);
+	    frame.add(label);
+        frame.setFocusable(true);
+        frame.setVisible(true);
+        
 		fos.flush();
 		
 		fos.close();
